@@ -84,11 +84,11 @@ main{
 }
 
 .detail-cnt input{
-    /* background-color: var(--bg-color); */
-    /* color: #FFF; */
-    min-width: 50px;
-    width: fit-content;
+    background-color: var(--contrast);
+    color: var(--bg-color);
+    width: 200px;
     text-align: center;
+    align-self: center;
     border: none;
     font-size: 1.8rem;
 }
@@ -97,7 +97,7 @@ main{
     outline: none;
 }
 
-.player-name, .score, .computer{
+.player-name, .score, .computer, .score-grid p{
     color: #FFF;
     font-size: 2rem;
 }
@@ -116,7 +116,9 @@ main{
 
 .item{
     cursor: pointer;
-    /* margin: 2.6rem 0; */
+}
+
+.item, .cp{
     width: 150px;
 }
 
@@ -130,6 +132,34 @@ main{
 
 #player-scissor, #computer-scissor{
     transform: rotateZ(90deg);
+}
+
+.score-grid{
+    margin: 3rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem 0;
+}
+
+.score-grid p{
+    color: #FFF;
+    font-size: 2rem;
+}
+
+.score-grid p:nth-child(odd){
+    background-color: #70E000;
+}
+
+.score-grid p:nth-child(even){
+    background-color: #D62828;
+}
+
+.primary{
+    background-color: var(--primary-color);
+}
+
+.secondary{
+    background-color: var(--secondary-color);
 }
 
 .none{
