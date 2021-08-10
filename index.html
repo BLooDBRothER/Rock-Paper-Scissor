@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>RPS</title>
+  </head>
+  <body>
+    <header>
+      <input id="clr-pk" type="color" name="player-color" value="#FFFFFF" />
+      <h1 id="title">Rock Paper Scissor</h1>
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        data-prefix="fas"
+        data-icon="adjust"
+        class="svg-inline--fa fa-adjust fa-w-16 theme-toggle"
+        role="img"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 512 512"
+      >
+        <path
+          fill="currentColor"
+          d="M8 256c0 136.966 111.033 248 248 248s248-111.034 248-248S392.966 8 256 8 8 119.033 8 256zm248 184V72c101.705 0 184 82.311 184 184 0 101.705-82.311 184-184 184z"
+        ></path>
+      </svg>
+    </header>
+    <main class="detail-cnt">
+
+        <div class="player-det">
+          <input type="text" value="player 1" class="none" />
+          <h2 class="player-name">Player 1</h2>
+          <div class="items">
+              <img src="./assets/rock-regular.svg" alt="Rock" id="player-rock" class="item">
+              <img src="./assets/paper-regular.svg" alt="Paper" id="player-paper" class="item">
+              <img src="./assets/scissors-regular.svg" alt="Scissor" id="player-scissor" class="item">
+          </div>
+        </div>
+
+        <div class="score-det">
+          <h2 class="score">Score</h2>
+        </div>
+
+        <div class="computer-det">
+            <h2 class="computer">Computer</h2>
+            <div class="items">
+                <img src="./assets/rock-regular.svg" alt="Rock" id="computer-rock" class="item">
+                <img src="./assets/paper-regular.svg" alt="Paper" id="computer-paper" class="item">
+                <img src="./assets/scissors-regular.svg" alt="Scissor" id="computer-scissor" class="item">
+            </div>
+        </div>
+
+        <script src="./main.js"></script>
+    </main>
+  </body>
+</html>

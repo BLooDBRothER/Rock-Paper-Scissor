@@ -1,0 +1,129 @@
+*, *::after, *::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-color: #0D0F17;
+    --primary-color: #70E000;
+    --secondary-color: #D62828;
+    --contrast: #FFf; 
+}
+
+html, body{
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    display: flex;
+    padding: 2rem;
+    justify-content: space-between;
+}
+
+.theme-toggle{
+    color: var(--contrast);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+#clr-pk{
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    border: none;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+#clr-pk::-webkit-color-swatch-wrapper {
+    padding: 0; 
+}
+#clr-pk::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+
+#title{
+    color: var(--secondary-color);
+    font-size: 3rem;
+}
+
+main{
+    margin-top: 2rem;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.player-det, .computer-det, .score-det{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 750px;
+}
+
+.player-det, .computer-det{
+    flex: 2;
+    margin: 0 1rem;
+    text-align: center;
+}
+
+.score-det{
+    flex: 1;
+    text-align: center;
+}
+
+.detail-cnt input{
+    /* background-color: var(--bg-color); */
+    /* color: #FFF; */
+    min-width: 50px;
+    width: fit-content;
+    text-align: center;
+    border: none;
+    font-size: 1.8rem;
+}
+
+.detail-cnt input:focus{
+    outline: none;
+}
+
+.player-name, .score, .computer{
+    color: #FFF;
+    font-size: 2rem;
+}
+
+.player-name{
+    cursor: pointer;
+}
+
+.items{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.item{
+    cursor: pointer;
+    /* margin: 2.6rem 0; */
+    width: 150px;
+}
+
+#player-scissor, #computer-scissor{
+    transform: rotateZ(90deg);
+}
+
+.none{
+    display: none;
+}
