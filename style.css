@@ -120,6 +120,14 @@ main{
     width: 150px;
 }
 
+.re{
+    color: var(--primary-color);
+}
+
+.so{
+    color: var(--secondary-color);
+}
+
 #player-scissor, #computer-scissor{
     transform: rotateZ(90deg);
 }
