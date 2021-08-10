@@ -6,8 +6,8 @@
 
 :root{
     --bg-color: #0D0F17;
-    --primary-color: #70E000;
-    --secondary-color: #D62828;
+    --primary-color: #113ebb;
+    --secondary-color: #ac2323;
     --contrast: #FFf; 
 }
 
@@ -147,11 +147,11 @@ main{
 }
 
 .score-grid p:nth-child(odd){
-    background-color: #70E000;
+    background-color: var(--primary-color);
 }
 
 .score-grid p:nth-child(even){
-    background-color: #D62828;
+    background-color: var(--secondary-color);
 }
 
 .primary{
