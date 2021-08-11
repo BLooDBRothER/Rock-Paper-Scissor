@@ -1,10 +1,12 @@
 import { PosEnd } from './path_data.js';
-import {random, regularPathD, solidPathD, value, vlaidateName} from './util.js'
+import {random, regularPathD, solidPathD, templateScore, value, vlaidateName} from './util.js'
 
 const items = document.querySelectorAll(".item");
 const cpItems = document.querySelectorAll(".cp");
 const name = document.querySelector(".player-name");
 const nameInp = document.querySelector(".player-inp");
+const scoreGrid = document.querySelector(".score-grid");
+scoreGrid.innerHTML = "";
 
 let delay, playerVal, computerVal, stop=0, val;
 
@@ -28,10 +30,16 @@ items.forEach(item => {
 
 function activateCheck(){
     playerVal = this.dataset.value;
+    autoSetUtil();
 }
 
 function validateAnswer(){
-
+    if( (playerVal == "scissor" && computerVal == "paper") || (playerVal == "rock" && computerVal == "scissor") || (playerVal == "paper" && computerVal == "rock"))
+        scoreGrid.innerHTML += templateScore[1] + templateScore[2];
+    else if( (playerVal == computerVal) || (playerVal == computerVal) || (playerVal == computerVal))
+        scoreGrid.innerHTML += templateScore[3] + templateScore[3];
+    else
+        scoreGrid.innerHTML += templateScore[2] + templateScore[1];
 }
 
 function setREgular(elem){
@@ -46,7 +54,20 @@ function setSolid(elem){
     elem.querySelector("path").setAttribute('d', pathD);
 }
 
+function autoSetUtil(){
+    stop = 0;
+    autoSet(0);
+    let outDelay = 600;
+    for(let i=0; i<3; i++){
+        setTimeout(() => {
+            autoSet(i);
+        }, outDelay);
+        outDelay+=600;
+    }
+}
+
 function autoSet(cnt){
+    console.count("hello")
     delay = 0;
     if(cnt == 2){
         computerVal = value[random()];
@@ -59,6 +80,7 @@ function autoSet(cnt){
         delay += 100;
         if(cnt == 2 && item.dataset.value == computerVal){
             stop = 1;
+            setTimeout(validateAnswer, delay);
             return;
         }
         setTimeout(()=>{
@@ -67,18 +89,6 @@ function autoSet(cnt){
         delay += 100;
     });    
 }
-
-// autoSet();
-let outDelay = 600;
-for(let i=0; i<3; i++){
-    setTimeout(() => {
-        autoSet(i);
-    }, outDelay);
-    outDelay+=600;
-}
-
-
-
 
 nameInp.addEventListener("input", vlaidateName);
 
@@ -90,7 +100,6 @@ window.addEventListener("click", (e) => {
         PosEnd(nameInp);
     }
     else if(e.target != nameInp && !nameInp.classList.contains("none")){
-
         name.innerText = nameInp.value.trim() == "" ? "Player 1" : nameInp.value;
         nameInp.classList.add("none");
         name.classList.remove("none");

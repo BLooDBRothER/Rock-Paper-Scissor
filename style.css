@@ -135,7 +135,7 @@ main{
 }
 
 .score-grid{
-    margin: 3rem 0;
+    margin: 4rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6rem 0;
@@ -146,12 +146,11 @@ main{
     font-size: 2rem;
 }
 
-.score-grid p:nth-child(odd){
-    background-color: var(--primary-color);
-}
-
-.score-grid p:nth-child(even){
-    background-color: var(--secondary-color);
+.draw{
+    width: 32px;
+    height: 32px;
+    color: var(--contrast);
+    margin: 0 auto;
 }
 
 .primary{
