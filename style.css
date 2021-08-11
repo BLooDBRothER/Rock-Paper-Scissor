@@ -6,7 +6,6 @@
 }
 
 :root{
-    /* --bg-color: #FFECD1; */
     --bg-color: #0D0F17;
     --primary-color: #113ebb;
     --secondary-color: #ac2323;
@@ -49,6 +48,9 @@ header{
 
 #clr-pk::-webkit-color-swatch-wrapper {
     padding: 0; 
+}
+#clr-pk::-moz-focus-outer{
+    border-radius: 50%;
 }
 #clr-pk::-webkit-color-swatch {
     border: none;
@@ -153,14 +155,9 @@ main{
 }
 
 .score-grid{
-    /* margin: 4rem 0; */
     display: flex;
     flex-direction: column;
-    /* justify-content: space-evenly; */
     justify-content: space-evenly;
-    /* display: grid;
-    grid-template-columns: 1fr 1fr; */
-    /* gap: clamp(2rem, 15vw, 6rem) 0; */
 }
 
 .score-grid .each-round{

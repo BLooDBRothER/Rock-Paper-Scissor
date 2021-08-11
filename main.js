@@ -35,7 +35,6 @@ function endGame() {
   if (rounds == 5) {
     rounds = 0;
     scoreGrid.innerHTML = "";
-    console.log(scores);
     showResult(scores[0], scores[1]);
     scores = [0, 0];
   }
@@ -68,20 +67,16 @@ function validateAnswer() {
     (playerVal == "rock" && computerVal == "scissor") ||
     (playerVal == "paper" && computerVal == "rock")
   ) {
-    console.log("win");
     scoreGrid.innerHTML += `<div class="each-round">${templateScore[1]} ${templateScore[2]}</div>`;
     scores[0]++;
   } else if (
     playerVal == computerVal
   ) {
     scoreGrid.innerHTML += `<div class="each-round">${templateScore[3]} ${templateScore[3]}</div>`;
-    console.log("draw")
   } else {
-    console.log("lost")
     scoreGrid.innerHTML += `<div class="each-round">${templateScore[2]} ${templateScore[1]}</div>`;
     scores[1]++;
   }
-  console.log(scores)
   setTimeout(callResetEach, 500);
 }
 
@@ -118,8 +113,7 @@ function autoSetUtil() {
 function autoSet(cnt) {
   delay = 0;
   if (cnt == 1) {
-    // computerVal = value[random()];
-    computerVal = "paper";
+    computerVal = value[random()];
   }
   cpItems.forEach((item) => {
     if (stop) return;
@@ -153,13 +147,6 @@ items.forEach((item) => {
   });
   item.addEventListener("click", activateCheck);
 });
-
-// cpItems.forEach(item => {
-//     item.addEventListener("transitionend", (e) => {
-//         console.log(e);
-//         validateAnswer();
-//     });
-// })
 
 themeIc.addEventListener("click", themeColorToggle);
 

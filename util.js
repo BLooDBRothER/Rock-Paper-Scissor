@@ -122,7 +122,6 @@ export function showResult(pl, cp) {
   main.classList.add("none");
   let player = calculatePercentage(pl);
   let computer = calculatePercentage(cp);
-  console.log(pl, cp, player, computer);
   displayPlayerScore(player);
   displayComputerScore(computer);
   let call = pl > cp ? player : computer;
