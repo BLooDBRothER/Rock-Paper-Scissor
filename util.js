@@ -152,6 +152,7 @@ export function themeColorToggle() {
   if (this.dataset.value === "dark") {
     if(clr.value == "#bada55"){
         clr.value = "#613ea3"
+        document.documentElement.style.setProperty("--inp-clr", clr.value);
     }
     document.documentElement.style.setProperty("--bg-color", "#FFECD1");
     document.documentElement.style.setProperty("--contrast", "#000");
@@ -160,6 +161,7 @@ export function themeColorToggle() {
   else{
     if(clr.value == "#613ea3"){
         clr.value = "#BADA55"
+        document.documentElement.style.setProperty("--inp-clr", clr.value);
     }
     document.documentElement.style.setProperty("--bg-color", "#0D0F17");
     document.documentElement.style.setProperty("--contrast", "#FFF");
