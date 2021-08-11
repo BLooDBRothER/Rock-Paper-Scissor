@@ -1,5 +1,5 @@
 import { PosEnd } from './path_data.js';
-import {random, regularPathD, solidPathD, templateScore, value, vlaidateName} from './util.js'
+import {animate, random, regularPathD, resetEach, solidPathD, templateScore, value, vlaidateName} from './util.js'
 
 const items = document.querySelectorAll(".item");
 const cpItems = document.querySelectorAll(".cp");
@@ -8,28 +8,23 @@ const nameInp = document.querySelector(".player-inp");
 const scoreGrid = document.querySelector(".score-grid");
 scoreGrid.innerHTML = "";
 
-let delay, playerVal, computerVal, stop=0, val;
+let delay, playerVal, computerVal, stop=0, oldTrans, isClicked=false;
 
-let str = "M464.8 80c-26.9-.4-48.8 21.2-48.8 48h-8V96.8c0-26.3-20.9-48.3-47.2-48.8-26.9-.4-48.8 21.2-48.8 48v32h-8V80.8c0-26.3-20.9-48.3-47.2-48.8-26.9-.4-48.8 21.2-48.8 48v48h-8V96.8c0-26.3-20.9-48.3-47.2-48.8-26.9-.4-48.8 21.2-48.8 48v136l-8-7.1v-48.1c0-26.3-20.9-48.3-47.2-48.8C21.9 127.6 0 149.2 0 176v66.4c0 27.4 11.7 53.5 32.2 71.8l111.7 99.3c10.2 9.1 16.1 22.2 16.1 35.9v6.7c0 13.3 10.7 24 24 24h240c13.3 0 24-10.7 24-24v-2.9c0-12.8 2.6-25.5 7.5-37.3l49-116.3c5-11.8 7.5-24.5 7.5-37.3V128.8c0-26.3-20.9-48.4-47.2-48.8z"
-
-items.forEach(item => {
-    item.addEventListener("mouseenter", function (){
-        // let pathD = solidPathD[this.dataset.value];
-        // this.classList.add("so");
-        // this.querySelector("path").setAttribute('d', pathD);
-        setSolid(this);
-    });
-    item.addEventListener("mouseleave", function (){
-        // let pathD = regularPathD[this.dataset.value];
-        // this.classList.remove("so");
-        // this.querySelector("path").setAttribute('d', pathD);
-        setREgular(this);
-    });
-    item.addEventListener("click", activateCheck);
-});
+function callResetEach(){
+    let player = document.querySelector(`.item[data-value = '${playerVal}']`);
+    let computer = document.querySelector(`.cp[data-value = '${computerVal}']`);
+    resetEach(player, playerVal);
+    resetEach(computer, computerVal);
+    isClicked = false;
+}
 
 function activateCheck(){
+    if(isClicked) return;
+    isClicked = true;
+    oldTrans = [];
+    setSolid(this);
     playerVal = this.dataset.value;
+    animateTool(this, ("pl-"+playerVal))
     autoSetUtil();
 }
 
@@ -40,6 +35,14 @@ function validateAnswer(){
         scoreGrid.innerHTML += templateScore[3] + templateScore[3];
     else
         scoreGrid.innerHTML += templateScore[2] + templateScore[1];
+    setTimeout(callResetEach, 500)
+}
+
+function animateTool(elem, sel){
+    let trans = animate[sel];
+    elem.style.transition = "transform .2s linear";
+    elem.style.transform = `rotateX(${trans[0]}deg) rotateY(${trans[1]}deg) rotateZ(${trans[2]}deg)`;
+    console.log(oldTrans)
 }
 
 function setREgular(elem){
@@ -67,7 +70,6 @@ function autoSetUtil(){
 }
 
 function autoSet(cnt){
-    console.count("hello")
     delay = 0;
     if(cnt == 2){
         computerVal = value[random()];
@@ -80,7 +82,10 @@ function autoSet(cnt){
         delay += 100;
         if(cnt == 2 && item.dataset.value == computerVal){
             stop = 1;
-            setTimeout(validateAnswer, delay);
+            setTimeout(() => {
+                animateTool(item, "cp-"+item.dataset.value)
+            }, delay);
+            setTimeout(validateAnswer, delay+200)
             return;
         }
         setTimeout(()=>{
@@ -89,6 +94,25 @@ function autoSet(cnt){
         delay += 100;
     });    
 }
+
+items.forEach(item => {
+    item.addEventListener("mouseenter", function (){
+        if(isClicked) return;
+        setSolid(this);
+    });
+    item.addEventListener("mouseleave", function (){
+        if(isClicked) return;
+        setREgular(this);
+    });
+    item.addEventListener("click", activateCheck);
+});
+
+// cpItems.forEach(item => {
+//     item.addEventListener("transitionend", (e) => {
+//         console.log(e);
+//         validateAnswer();
+//     });
+// })
 
 nameInp.addEventListener("input", vlaidateName);
 
