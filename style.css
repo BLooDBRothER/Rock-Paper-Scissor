@@ -8,7 +8,9 @@
     --bg-color: #0D0F17;
     --primary-color: #113ebb;
     --secondary-color: #ac2323;
-    --contrast: #FFf; 
+    --contrast: #FFF;
+    --inp-clr: #BADA55;
+    --lead: #FFF; 
 }
 
 html, body{
@@ -29,15 +31,15 @@ header{
 
 .theme-toggle{
     color: var(--contrast);
-    width: 50px;
-    height: 50px;
+    height: clamp(30px, 7vw, 60px);
+    width: clamp(30px, 7vw, 60px);
     cursor: pointer;
 }
 
 #clr-pk{
     border-radius: 50%;
-    height: 60px;
-    width: 60px;
+    height: clamp(30px, 7vw, 60px);
+    width: clamp(30px, 7vw, 60px);
     border: none;
     outline: none;
     -webkit-appearance: none;
@@ -53,23 +55,30 @@ header{
 
 #title{
     color: var(--secondary-color);
-    font-size: 3rem;
+    font-size: clamp(1rem, 5vw, 3rem);
 }
 
 main{
     margin-top: 2rem;
-    padding: 0 2rem;
+    padding: 0 clamp(0rem, 5vw, 2rem);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex: 1;
 }
 
-.player-det, .computer-det, .score-det{
+/* .player-det, .computer-det, .score-det{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     min-height: 750px;
+} */
+
+.items, .score-grid{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: clamp(500px,90vw, 750px);
 }
 
 .player-det, .computer-det{
@@ -98,12 +107,20 @@ main{
 }
 
 .player-name, .score, .computer, .score-grid p{
-    color: #FFF;
-    font-size: 2rem;
+    font-size: clamp(1rem, 5vw, 2rem);
+}
+
+.score{
+    color: var(--lead);
 }
 
 .player-name{
+    color: var(--inp-clr);
     cursor: pointer;
+}
+
+.computer{
+    color: var(--secondary-color);
 }
 
 .items{
@@ -119,7 +136,7 @@ main{
 }
 
 .item, .cp{
-    width: 150px;
+    width: clamp(50px, 15vw, 150px);
 }
 
 .re{
@@ -135,23 +152,83 @@ main{
 }
 
 .score-grid{
-    margin: 4rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem 0;
+    /* margin: 4rem 0; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    justify-content: space-evenly;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    /* gap: clamp(2rem, 15vw, 6rem) 0; */
+}
+
+.score-grid .each-round{
+    display: flex;
+    align-items: center;
 }
 
 .score-grid p{
+    flex: 1;
+    height: max-content;
     color: #FFF;
-    font-size: 2rem;
+    font-size: clamp(1rem, 3vw, 2rem);
+    padding: clamp(.2rem, 3vw, .4rem);
+}
+
+.score-grid .each-round p:nth-child(odd){
+    border-radius: 2rem 0 0 2rem;
+}
+
+.score-grid .each-round p:nth-child(even){
+    border-radius: 0 2rem 2rem 0;
 }
 
 .draw{
     width: 32px;
     height: 32px;
-    color: var(--contrast);
+    color: var(--inp-clr);
     margin: 0 auto;
 }
+
+.score-grid p:nth-child(odd){
+    background-color: var(--primary-color);
+}
+
+.score-grid p:nth-child(even){
+    background-color: var(--secondary-color);
+}
+
+.result{
+    position: absolute;
+    font-size: clamp(2rem, 10vw, 5rem);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;    
+}
+
+.player-scr, .computer-scr{
+    display: flex;
+    justify-content: space-between;
+}
+
+.end-name{
+    margin-right: 2rem;
+    color: var(--primary-color);
+}
+
+.disp-score{
+    color: var(--secondary-color);
+}
+
+.status{
+    color: var(--inp-clr);
+    align-self: center;
+    margin-top: 2rem;
+}
+
+/* Global */
 
 .primary{
     background-color: var(--primary-color);
@@ -159,6 +236,20 @@ main{
 
 .secondary{
     background-color: var(--secondary-color);
+}
+
+.tit-rc{
+    color: var(--primary-color);
+    margin-right: .3rem;
+}
+
+.tit-pa{
+    color: var(--inp-clr);
+    margin-right: .3rem;
+}
+
+.tit-sc{
+    color: var(--secondary-color);
 }
 
 .none{
