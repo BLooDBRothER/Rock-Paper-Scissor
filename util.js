@@ -44,10 +44,10 @@ export const templateScore = {
 
 export const animate = {
   "pl-rock": [0, 0, 90],
-  "pl-paper": [0, 70, 0],
+  "pl-paper": [0, 0, 90],
   "pl-scissor": [0, 180, 0],
   "cp-rock": [180, 0, -90],
-  "cp-paper": [180, 70, 180],
+  "cp-paper": [180, 0, -90],
   "cp-scissor": [0, 0, 0],
 };
 

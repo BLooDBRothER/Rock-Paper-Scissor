@@ -61,7 +61,6 @@ header{
 }
 
 main{
-    margin-top: 2rem;
     padding: 0 clamp(0rem, 5vw, 2rem);
     display: flex;
     justify-content: space-between;
