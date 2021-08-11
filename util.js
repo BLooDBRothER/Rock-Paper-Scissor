@@ -70,3 +70,79 @@ export function resetEach(elem, val){
         elem.style.transform = "none";
     }
 }
+
+const score = document.querySelector(".score");
+export function scoreColorUpdate(pl, cp){
+    if(pl == cp){
+        score.style.color = "var(--contrast)";
+    }
+    else if(pl > cp){
+        score.style.color = "var(--inp-clr)";
+    }
+    else{
+        score.style.color = "var(--secondary-color)";
+    }
+}
+
+let plup = 0;
+const plscore = document.querySelector(".pl-score");
+function displayPlayerScore(val){
+    if (plup > val) return;
+    plscore.innerText = plup++;
+    setTimeout(() => {
+        displayPlayerScore(val);
+    }, 20);
+}
+
+let cpup = 0;
+const cpscore = document.querySelector(".cp-score");
+function displayComputerScore(val){
+    if (cpup > val) return;
+    cpscore.innerText = cpup++;
+    setTimeout(() => {
+        displayComputerScore(val);
+    }, 20);
+}
+
+function calculatePercentage(val){
+    return (val/5) * 100;
+}
+
+const resutl = document.querySelector(".result");
+const header = document.querySelector("header");
+const main = document.querySelector("main");
+const status = document.querySelector(".status");
+export function showResult(pl, cp){
+    plup = cpup = 0;
+    resutl.classList.remove("none");
+    header.classList.add("none");
+    main.classList.add("none");
+    let player = calculatePercentage(pl);
+    let computer = calculatePercentage(cp);
+    console.log(pl, cp, player, computer);
+    displayPlayerScore(player);
+    displayComputerScore(computer);
+    let call = pl > cp ? player : computer;
+
+    setTimeout(() => {
+        if(pl == cp){
+            status.innerText = "It's Draw";
+        }
+        else if(pl > cp){
+            status.innerText = "HURRAY! You Won";
+        }
+        else{
+            status.innerText = "Ouch! Luck is with computer";
+        }
+    }, call*20);
+
+    setTimeout(resetAll, (call*20)+3500)
+}
+
+function resetAll(){
+    resutl.classList.add("none");
+    header.classList.remove("none");
+    main.classList.remove("none");
+    cpscore.innerText = plscore.innerText = 0;
+
+}
