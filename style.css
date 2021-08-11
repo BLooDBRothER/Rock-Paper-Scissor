@@ -2,15 +2,17 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    transition: all .4s ease;
 }
 
 :root{
+    /* --bg-color: #FFECD1; */
     --bg-color: #0D0F17;
     --primary-color: #113ebb;
     --secondary-color: #ac2323;
     --contrast: #FFF;
     --inp-clr: #BADA55;
-    --lead: #FFF; 
+    --lead: var(--contrast); 
 }
 
 html, body{

@@ -8,10 +8,12 @@ import {
   showResult,
   solidPathD,
   templateScore,
+  themeColorToggle,
   value,
   vlaidateName,
 } from "./util.js";
 
+const themeIc = document.querySelector(".theme-toggle");
 const items = document.querySelectorAll(".item");
 const cpItems = document.querySelectorAll(".cp");
 const name = document.querySelector(".player-name");
@@ -154,6 +156,8 @@ items.forEach((item) => {
 //         validateAnswer();
 //     });
 // })
+
+themeIc.addEventListener("click", themeColorToggle);
 
 nameInp.addEventListener("input", vlaidateName);
 
