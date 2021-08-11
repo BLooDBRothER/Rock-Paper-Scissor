@@ -38,6 +38,15 @@ export const templateScore = {
     3: bugSVG
 }
 
+export const animate = {
+    "pl-rock": [0, 0, 90],
+    "pl-paper": [0, 70, 0],
+    "pl-scissor": [0, 180, 0],
+    "cp-rock": [180, 0, -90],
+    "cp-paper": [180, 70, 180],
+    "cp-scissor": [0, 0, 0]
+}
+
 let temp;
 export function vlaidateName(){
     if(this.value.length == 8){
@@ -50,4 +59,14 @@ export function vlaidateName(){
 
 export function random(){
     return (Math.floor(Math.random() * 3)+1);
+}
+
+export function resetEach(elem, val){
+    elem.querySelector("path").setAttribute("d", regularPathD[elem.dataset.value]);
+    elem.classList.remove("so");
+    if(val === "scissor")
+        elem.style.transform = "rotateZ(90deg)";
+    else{
+        elem.style.transform = "none";
+    }
 }
