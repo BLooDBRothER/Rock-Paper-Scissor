@@ -31,7 +31,14 @@ let delay,
   oldTrans,
   isClicked = false,
   scores = [0, 0],
-  rounds = 0;
+  rounds = 0,
+  lastHover;
+
+function endStart(){
+  if(lastHover === "") return;
+  setSolid(lastHover);
+  lastHover = "";
+}
 
 function endGame() {
   if (rounds == 5) {
@@ -51,10 +58,12 @@ function callResetEach() {
   isClicked = false;
   rounds++;
   setTimeout(endGame, 500);
+  endStart();
 }
 
 function activateCheck() {
   if (isClicked) return;
+  lastHover = this;
   isClicked = true;
   oldTrans = [];
   setSolid(this);
@@ -140,11 +149,18 @@ function autoSet(cnt) {
 
 items.forEach((item) => {
   item.addEventListener("mouseenter", function () {
-    if (isClicked) return;
+    if (isClicked) {
+      lastHover = this;
+      return;
+    }
     setSolid(this);
   });
   item.addEventListener("mouseleave", function () {
-    if (isClicked) return;
+    if (isClicked) {
+      lastHover = "";
+      console.log(lastHover)
+      return;
+    }
     setREgular(this);
   });
   item.addEventListener("click", activateCheck);
