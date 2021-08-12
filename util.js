@@ -87,21 +87,21 @@ export function scoreColorUpdate(pl, cp) {
   }
 }
 
-let plup = 0;
+let player_score_inc = 0;
 const plscore = document.querySelector(".pl-score");
 function displayPlayerScore(val) {
-  if (plup > val) return;
-  plscore.innerText = plup++;
+  if (player_score_inc > val) return;
+  plscore.innerText = player_score_inc++;
   setTimeout(() => {
     displayPlayerScore(val);
   }, 20);
 }
 
-let cpup = 0;
+let computer_score_inc = 0;
 const cpscore = document.querySelector(".cp-score");
 function displayComputerScore(val) {
-  if (cpup > val) return;
-  cpscore.innerText = cpup++;
+  if (computer_score_inc > val) return;
+  cpscore.innerText = computer_score_inc++;
   setTimeout(() => {
     displayComputerScore(val);
   }, 20);
@@ -116,7 +116,7 @@ const header = document.querySelector("header");
 const main = document.querySelector("main");
 const status = document.querySelector(".status");
 export function showResult(pl, cp) {
-  plup = cpup = 0;
+  player_score_inc = computer_score_inc = 0;
   resutl.classList.remove("none");
   header.classList.add("none");
   main.classList.add("none");
