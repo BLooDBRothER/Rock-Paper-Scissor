@@ -81,7 +81,7 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    min-height: clamp(500px,90vw, 750px);
+    /* min-height: clamp(500px,90vw, 750px); */
 }
 
 .player-det, .computer-det{
@@ -224,6 +224,18 @@ main{
     color: var(--inp-clr);
     align-self: center;
     margin-top: 2rem;
+}
+
+.footer{
+    display: flex;
+    font-size: 3rem;
+    color: var(--inp-clr);
+    justify-content: center;
+    align-items: center;
+}
+
+.footer > div{
+    padding: 0 clamp(20px, 8vw, 60px);
 }
 
 /* Global */

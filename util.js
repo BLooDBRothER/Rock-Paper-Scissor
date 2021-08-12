@@ -77,7 +77,10 @@ export function resetEach(elem, val) {
 }
 
 const score = document.querySelector(".score");
-export function scoreColorUpdate(pl, cp) {
+const scoreEach = document.querySelectorAll(".curr-score");
+export function scoreUpdate(pl, cp) {
+  scoreEach[0].innerText = calculatePercentage(pl);
+  scoreEach[1].innerText = calculatePercentage(cp)
   if (pl === cp) {
     score.style.color = "var(--contrast)";
   } else if (pl > cp) {

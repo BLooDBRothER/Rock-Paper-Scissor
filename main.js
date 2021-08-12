@@ -4,7 +4,7 @@ import {
   random,
   regularPathD,
   resetEach,
-  scoreColorUpdate,
+  scoreUpdate,
   showResult,
   solidPathD,
   templateScore,
@@ -14,7 +14,9 @@ import {
 } from "./util.js";
 
 const themeIc = document.querySelector(".theme-toggle");
+const itemGrid = document.querySelectorAll(".items");
 const items = document.querySelectorAll(".item");
+const main = document.querySelector("main");
 const cpItems = document.querySelectorAll(".cp");
 const name = document.querySelector(".player-name");
 const nameInp = document.querySelector(".player-inp");
@@ -41,7 +43,7 @@ function endGame() {
 }
 
 function callResetEach() {
-  scoreColorUpdate(scores[0], scores[1]);
+  scoreUpdate(scores[0], scores[1]);
   let player = document.querySelector(`.item[data-value = '${playerVal}']`);
   let computer = document.querySelector(`.cp[data-value = '${computerVal}']`);
   resetEach(player, playerVal);
@@ -168,3 +170,14 @@ window.addEventListener("click", (e) => {
     name.classList.remove("none");
   }
 });
+
+
+function setHeight(){
+  let height = main.offsetHeight;
+  itemGrid.forEach(item => {
+    item.style.height = `${height-50}px`;
+  });
+  scoreGrid.style.height = `${height-50}px`;
+}
+
+window.onload = window.onresize= setHeight;
