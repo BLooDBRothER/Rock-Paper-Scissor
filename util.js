@@ -130,6 +130,7 @@ export function showResult(pl, cp) {
   let call = pl > cp ? player : computer;
 
   setTimeout(() => {
+    status.innerText = "";
     if (pl == cp) {
       status.innerText = "It's Draw";
     } else if (pl > cp) {
